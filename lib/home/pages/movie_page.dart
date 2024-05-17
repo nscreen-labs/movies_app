@@ -59,9 +59,10 @@ class MoviePage extends StatelessWidget {
                             width: 10,
                           ),
                           Text(
-                            DateTime.parse(details?.releaseDate ?? '')
-                                .year
-                                .toString(),
+                            DateTime.tryParse(details?.releaseDate ?? '')
+                                    ?.year
+                                    .toString() ??
+                                '',
                           ),
                         ],
                       ),

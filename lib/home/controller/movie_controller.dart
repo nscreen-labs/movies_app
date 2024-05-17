@@ -38,6 +38,7 @@ class MovieController {
 
     for (var movie in movies) {
       downloadImage(getImageUrl(movie.posterPath ?? ''));
+      downloadImage(getImageUrl(movie.backdropPath ?? ''));
     }
 
     await _moviesDao.addAll(movies);

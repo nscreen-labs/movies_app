@@ -1,16 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import '../../core/database/database.dart';
 import '../../core/utils/get_image_url.dart';
-import '../controller/home_controller.dart';
-import '../repository/movie_repository.dart';
+import '../controller/movie_controller.dart';
 
 class MovieCard extends StatelessWidget {
   MovieCard({super.key, required this.movie, this.onTap});
   final Movie movie;
   final Function()? onTap;
 
-  final controller = MovieController(MovieRepository());
+  final controller = GetIt.I.get<MovieController>();
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import '../controller/home_controller.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+import 'package:get_it/get_it.dart';
+import '../../core/database/database.dart';
+import '../controller/movie_controller.dart';
 import '../repository/movie_repository.dart';
 import '../widgets/movie_card.dart';
 import 'movie_page.dart';
@@ -12,11 +15,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final controller = MovieController(MovieRepository());
+  final controller = GetIt.I.get<MovieController>();
 
   @override
   void initState() {
     super.initState();
+
     controller.getMoviesFromRemote();
   }
 

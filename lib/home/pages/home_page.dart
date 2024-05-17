@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:get_it/get_it.dart';
-import '../../core/database/database.dart';
 import '../controller/movie_controller.dart';
-import '../repository/movie_repository.dart';
 import '../widgets/movie_card.dart';
 import 'movie_page.dart';
 
@@ -38,14 +35,12 @@ class _HomePageState extends State<HomePage> {
               return const Center(
                 child: CircularProgressIndicator(),
               );
+            case ConnectionState.none:
+              return const Center(
+                child: Text('No data'),
+              );
+            case ConnectionState.active:
             case ConnectionState.done:
-              if (snapshot.hasError) {
-                return Center(
-                  child: Text(snapshot.error.toString()),
-                );
-              }
-              break;
-            default:
               break;
           }
           return GridView.builder(
